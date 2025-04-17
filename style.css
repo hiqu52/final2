@@ -195,6 +195,7 @@ header {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
     position: relative;
+    bottom: 20px;
     left: 10px;
     background: linear-gradient(45deg, #ff7e5f, #feb47b, #ffcc00, #ff6b6b);
     background-size: 300% 300%;
@@ -219,19 +220,6 @@ header {
     right: 170px;
 }
 
-
-/* Moving Gradient Animation
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-} */
 
 #logo-img {
     margin-right: 570px;
@@ -260,6 +248,10 @@ header {
         width: 80px;
         /* Adjust size if needed */
     }
+    #logo-text{
+        position: relative;
+        bottom: 60px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -270,6 +262,7 @@ header {
         top: 0;
         width: 70px;
         /* Adjust size for smaller screens */
+
     }
 }
 
