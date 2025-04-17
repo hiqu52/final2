@@ -956,69 +956,77 @@
                     dropoffLocation.value || 'Not specified';
             }
 
-            // Download booking summary as PDF
-            function downloadBookingSummary() {
-                // Get all summary data
-                const service = document.getElementById('summary-service').textContent;
-                const vehicle = document.getElementById('summary-vehicle').textContent;
-                const date = document.getElementById('summary-date').textContent;
-                const time = document.getElementById('summary-time').textContent;
-                const pickup = document.getElementById('summary-pickup').textContent;
-                const dropoff = document.getElementById('summary-dropoff').textContent;
-                const duration = document.getElementById('summary-duration').textContent;
-                const total = document.getElementById('summary-total').textContent;
+           // Download booking summary as PDF
+function downloadBookingSummary() {
+    try {
+        // Get all summary data
+        const service = document.getElementById('summary-service').textContent;
+        const vehicle = document.getElementById('summary-vehicle').textContent;
+        const date = document.getElementById('summary-date').textContent;
+        const time = document.getElementById('summary-time').textContent;
+        const pickup = document.getElementById('summary-pickup').textContent;
+        const dropoff = document.getElementById('summary-dropoff').textContent;
+        const duration = document.getElementById('summary-duration').textContent;
+        // const total = document.getElementById('summary-total')?.textContent || "Price on request";
 
-                // Create a new PDF document
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
+        // Create a new PDF document
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
-                // Add title
-                doc.setFontSize(18);
-                doc.setTextColor(26, 31, 54);
-                doc.text('Charter House Cars - Booking Summary', 105, 30, { align: 'center' });
+        // Add logo (optional)
+        // You would need to have the logo image data as base64 or URL
+        // doc.addImage(logoData, 'JPEG', 10, 10, 50, 20);
 
-                // Add line
-                doc.setDrawColor(255, 107, 53);
-                doc.setLineWidth(0.5);
-                doc.line(20, 35, 190, 35);
+        // Add title
+        doc.setFontSize(18);
+        doc.setTextColor(26, 31, 54);
+        doc.text('Charter House Cars - Booking Summary', 105, 30, { align: 'center' });
 
-                // Add booking details
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0);
+        // Add line
+        doc.setDrawColor(255, 107, 53);
+        doc.setLineWidth(0.5);
+        doc.line(20, 35, 190, 35);
 
-                let yPosition = 50;
-                doc.text(`Service Type: ${service}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Vehicle: ${vehicle}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Pickup Date: ${date}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Pickup Time: ${time}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Pickup Location: ${pickup}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Drop-off Location: ${dropoff}`, 20, yPosition);
-                yPosition += 10;
-                doc.text(`Duration: ${duration}`, 20, yPosition);
-                yPosition += 10;
+        // Add booking details
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
 
-                // Add total with emphasis
-                doc.setFontSize(14);
-                doc.setTextColor(26, 31, 54);
-                doc.text(`Estimated Total: ${total}`, 20, yPosition);
-                yPosition += 15;
+        let yPosition = 50;
+        doc.text(`Service Type: ${service}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Vehicle: ${vehicle}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Pickup Date: ${date}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Pickup Time: ${time}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Pickup Location: ${pickup}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Drop-off Location: ${dropoff}`, 20, yPosition);
+        yPosition += 10;
+        doc.text(`Duration: ${duration}`, 20, yPosition);
+        yPosition += 10;
 
-                // Add thank you message
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0);
-                doc.text('Thank you for choosing Charter House Cars!', 105, yPosition, { align: 'center' });
+        // Add total with emphasis (commented out since the element is not in HTML)
+        // doc.setFontSize(14);
+        // doc.setTextColor(26, 31, 54);
+        // doc.text(`Estimated Total: ${total}`, 20, yPosition);
+        // yPosition += 15;
 
-                // Save the PDF
-                doc.save(`CharterHouseCars-Booking-${date.replace(/\//g, '-')}.pdf`);
-            }
+        // Add thank you message
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        doc.text('Thank you for choosing Charter House Cars!', 105, yPosition, { align: 'center' });
+        yPosition += 10;
+        doc.text('We will contact you shortly to confirm your booking.', 105, yPosition, { align: 'center' });
 
-            // Initialize summary
-            updateBookingSummary();
+        // Save the PDF
+        doc.save(`CharterHouseCars-Booking-${new Date().toISOString().slice(0, 10)}.pdf`);
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('There was an error generating the PDF. Please try again.');
+    }
+}
         });
     </script>
 </body>
