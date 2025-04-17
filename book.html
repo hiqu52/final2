@@ -571,12 +571,14 @@
 <body>
     <!-- Header -->
     <header class="hero-header" id="header">
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="logo-image.png" alt="Charter House Cars Logo" class="logo-img">
-                <div id="logo-text">CHARTERHOUSECARS</div>
+        <a href="index.html" style="text-decoration: none;">
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="logo-image.png" alt="Charter House Cars Logo" class="logo-img">
+                    <div id="logo-text">CHARTERHOUSECARS</div>
+                </div>
             </div>
-        </div>
+        </a>
     </header>
 
     <!-- Hero Section -->
@@ -649,17 +651,17 @@
                         <label class="vehicle-option">
                             <input type="radio" name="vehicle" value="executive" checked>
                             <div class="vehicle-image">
-                                <img src="WhatsApp Image 2025-02-09 at 8.03.38 PM.jpeg" alt="Executive Sedan">
+                                <img src="executive-car.jpeg" alt="Executive Sedan">
                             </div>
                             <div class="vehicle-info">
-                                <div class="vehicle-name">Executive Sedan</div>
+                                <div class="vehicle-name">Executive </div>
                             </div>
                         </label>
 
                         <label class="vehicle-option">
                             <input type="radio" name="vehicle" value="luxury">
                             <div class="vehicle-image">
-                                <img src="WhatsApp Image 2025-02-09 at 8.03.40 PM (1).jpeg" alt="Luxury SUV">
+                                <img src="SUV-car.jpeg" alt="Luxury SUV">
                             </div>
                             <div class="vehicle-info">
                                 <div class="vehicle-name">Luxury SUV</div>
@@ -668,28 +670,28 @@
                         <label class="vehicle-option">
                             <input type="radio" name="vehicle" value="luxury">
                             <div class="vehicle-image">
-                                <img src="WhatsApp Image 2025-02-09 at 8.03.40 PM.jpeg" alt="Luxury SUV">
+                                <img src="estate-car.jpeg" alt="Estate Car">
                             </div>
                             <div class="vehicle-info">
-                                <div class="vehicle-name">Luxury SUV</div>
+                                <div class="vehicle-name">Estate Car</div>
                             </div>
                         </label>
                         <label class="vehicle-option">
                             <input type="radio" name="vehicle" value="luxury">
                             <div class="vehicle-image">
-                                <img src="WhatsApp Image 2025-02-09 at 8.03.41 PM.jpeg" alt="Luxury SUV">
+                                <img src="Van.jpeg" alt="Executive Van">
                             </div>
                             <div class="vehicle-info">
-                                <div class="vehicle-name">Luxury SUV</div>
+                                <div class="vehicle-name">Executive Van</div>
                             </div>
                         </label>
                         <label class="vehicle-option">
                             <input type="radio" name="vehicle" value="premium">
                             <div class="vehicle-image">
-                                <img src="WhatsApp Image 2025-02-09 at 8.03.42 PM.jpeg" alt="Premium Limousine">
+                                <img src="Mpvs.jpeg" alt="MPVs">
                             </div>
                             <div class="vehicle-info">
-                                <div class="vehicle-name">Premium Limousine</div>
+                                <div class="vehicle-name">MPVs</div>
                             </div>
                         </label>
                     </div>
@@ -857,7 +859,7 @@
 
                 // Show confirmation modal immediately
                 confirmationModal.classList.add('active');
-                
+
                 // Automatically download the summary when form is submitted
                 downloadBookingSummary();
 
@@ -890,38 +892,38 @@
                     special_requests: formData.specialRequests || "None",
                     message: `New booking request from ${formData.firstName} ${formData.lastName}`
                 })
-                .then(function(response) {
-                    console.log("Email sent successfully!", response.status, response.text);
-                }, function(error) {
-                    console.log("Email failed to send...", error);
-                    document.querySelector('.modal-message').innerHTML = 
-                        "Thank you for your booking! We've received your request but couldn't send a confirmation email. We'll contact you shortly.";
-                });
+                    .then(function (response) {
+                        console.log("Email sent successfully!", response.status, response.text);
+                    }, function (error) {
+                        console.log("Email failed to send...", error);
+                        document.querySelector('.modal-message').innerHTML =
+                            "Thank you for your booking! We've received your request but couldn't send a confirmation email. We'll contact you shortly.";
+                    });
 
                 // Reset form
                 bookingForm.reset();
             });
 
             // Close modal when clicking the X button
-            modalClose.addEventListener('click', function() {
+            modalClose.addEventListener('click', function () {
                 confirmationModal.classList.remove('active');
             });
 
             // Close modal when clicking outside
-            confirmationModal.addEventListener('click', function(e) {
+            confirmationModal.addEventListener('click', function (e) {
                 if (e.target === this) {
                     confirmationModal.classList.remove('active');
                 }
             });
 
             // Download booking summary from main button
-            downloadBtn.addEventListener('click', function(e) {
+            downloadBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 downloadBookingSummary();
             });
 
             // Download booking summary from modal button
-            downloadModalBtn.addEventListener('click', function(e) {
+            downloadModalBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 downloadBookingSummary();
             });
@@ -965,25 +967,25 @@
                 const dropoff = document.getElementById('summary-dropoff').textContent;
                 const duration = document.getElementById('summary-duration').textContent;
                 const total = document.getElementById('summary-total').textContent;
-                
+
                 // Create a new PDF document
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
-                
+
                 // Add title
                 doc.setFontSize(18);
                 doc.setTextColor(26, 31, 54);
                 doc.text('Charter House Cars - Booking Summary', 105, 30, { align: 'center' });
-                
+
                 // Add line
                 doc.setDrawColor(255, 107, 53);
                 doc.setLineWidth(0.5);
                 doc.line(20, 35, 190, 35);
-                
+
                 // Add booking details
                 doc.setFontSize(12);
                 doc.setTextColor(0, 0, 0);
-                
+
                 let yPosition = 50;
                 doc.text(`Service Type: ${service}`, 20, yPosition);
                 yPosition += 10;
@@ -999,18 +1001,18 @@
                 yPosition += 10;
                 doc.text(`Duration: ${duration}`, 20, yPosition);
                 yPosition += 10;
-                
+
                 // Add total with emphasis
                 doc.setFontSize(14);
                 doc.setTextColor(26, 31, 54);
                 doc.text(`Estimated Total: ${total}`, 20, yPosition);
                 yPosition += 15;
-                
+
                 // Add thank you message
                 doc.setFontSize(12);
                 doc.setTextColor(0, 0, 0);
                 doc.text('Thank you for choosing Charter House Cars!', 105, yPosition, { align: 'center' });
-                
+
                 // Save the PDF
                 doc.save(`CharterHouseCars-Booking-${date.replace(/\//g, '-')}.pdf`);
             }
@@ -1020,4 +1022,5 @@
         });
     </script>
 </body>
+
 </html>

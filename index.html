@@ -54,8 +54,8 @@
         </script>
        <nav data-aos="fade-up" data-aos-delay="500">
         <div class="nav-container">
-          <h2 id="logo-text">CHARTERHOUSECARS</h2>
-          <img src="logo-image.png" alt="Logo" id="logo-img">
+        <a href="index.html">  <h2 id="logo-text">CHARTERHOUSECARS</h2>
+          <img src="logo-image.png" alt="Logo" id="logo-img"></a>
       
           <!-- Hamburger Menu Icon -->
           <div class="hamburger" onclick="toggleMenu()">
@@ -177,36 +177,36 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     </div>
 </section>
 
-        <div class="counter-container" data-aos="fade-up" data-aos-delay="500">
-            <div class="counter" id="happyClients">0+</div>
-            <div class="label">Happy Clients</div>
-        </div>
+<div class="counter-container" data-aos="fade-up" data-aos-delay="500">
+    <div class="counter" id="happyClients">0+</div>
+    <div class="label">Happy Clients</div>
+</div>
 
-        <script>
-            function animateCounter(id, start, end, duration) {
-                let obj = document.getElementById(id);
-                let range = end - start;
-                let startTime = null;
+<script>
+    function animateCounter(id, start, end, duration) {
+        let obj = document.getElementById(id);
+        let range = end - start;
+        let startTime = null;
 
-                function step(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    let progress = timestamp - startTime;
-                    let increment = Math.min(start + (range * (progress / duration)), end);
-                    obj.textContent = Math.floor(increment);
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            let progress = timestamp - startTime;
+            let increment = Math.min(start + (range * (progress / duration)), end);
+            obj.textContent = Math.floor(increment) + "+"; // Add + without comma
 
-                    if (progress < duration) {
-                        requestAnimationFrame(step);
-                    } else {
-                        obj.textContent = end; // Ensure the final number is set
-                    }
-                }
-
+            if (progress < duration) {
                 requestAnimationFrame(step);
+            } else {
+                obj.textContent = end + "+"; // Final value with +
             }
+        }
 
-            // Run the counter animation
-            animateCounter("happyClients", 0, 10000, 3000); // From 0 to 10,000 in 3 seconds
-        </script>
+        requestAnimationFrame(step);
+    }
+
+    // Run the counter animation
+    animateCounter("happyClients", 0, 10000, 3000);
+</script>
        <!-- Why Choose Our Taxi Service -->
 <section id="why-choose-us" class="benefits-section">
     <div class="container">
@@ -287,7 +287,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         <!-- Car 1 -->
         <div class="car-card" data-aos="fade-up">
             <div class="car-image-container">
-                <img src="WhatsApp Image 2025-02-09 at 8.03.38 PM.jpeg" alt="Mercedes E-Class" class="car-image">
+                <img src="Salon-car.jpeg" alt="Mercedes E-Class" class="car-image">
                 <div class="car-badge">Most Popular</div>
             </div>
             <div class="car-details">
@@ -324,7 +324,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         <!-- Car 2 -->
         <div class="car-card" data-aos="fade-up" data-aos-delay="100">
             <div class="car-image-container">
-                <img src="WhatsApp Image 2025-02-09 at 8.03.40 PM (1).jpeg" alt="BMW 5 Series" class="car-image">
+                <img src="executive-car.jpeg" alt="BMW 5 Series" class="car-image">
                 <div class="car-badge executive">Executive</div>
             </div>
             <div class="car-details">
@@ -360,7 +360,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
          <!-- Car 3 -->
          <div class="car-card" data-aos="fade-up" data-aos-delay="100">
             <div class="car-image-container">
-                <img src="WhatsApp Image 2025-02-09 at 8.03.40 PM (1).jpeg" alt="BMW 5 Series" class="car-image">
+                <img src="estate-car.jpeg" alt="BMW 5 Series" class="car-image">
                 <div class="car-badge executive">Estate</div>
             </div>
             <div class="car-details">
@@ -396,7 +396,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
          <!-- Car 4 -->
          <div class="car-card" data-aos="fade-up" data-aos-delay="100">
             <div class="car-image-container">
-                <img src="WhatsApp Image 2025-02-09 at 8.03.41 PM.jpeg" alt="BMW 5 Series" class="car-image">
+                <img src="Mpvs.jpeg" alt="BMW 5 Series" class="car-image">
                 <!-- <div class="car-badge executive">MPVs</div> -->
             </div>
             <div class="car-details">
@@ -433,7 +433,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         <!-- Car 3 -->
         <div class="car-card" data-aos="fade-up" data-aos-delay="200">
             <div class="car-image-container">
-                <img src="WhatsApp Image 2025-02-09 at 8.03.42 PM.jpeg" alt="Audi A6" class="car-image">
+                <img src="Van.jpeg" alt="Audi A6" class="car-image">
             </div>
             <div class="car-details">
                 <h3 class="car-model">8 Seaters</h3>
@@ -576,9 +576,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             </div>
         </section>
 
-        <footer class="footer" data-aos="fade-up" data-aos-delay="500">
+        <footer class="footer">
             <div class="footer-content">
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="500">
+                <div class="footer-section">
                     <h3>Charter House Cars</h3>
                     <div class="footer-links">
                         <a href="index.html" target="_parent">Home</a>
@@ -588,7 +588,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
                     </div>
                 </div>
         
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="500">
+                <div class="footer-section">
                     <h3>Services</h3>
                     <div class="footer-links">
                         <a href="airport-transfer.html" target="_parent">Airport Transfers</a>
@@ -597,7 +597,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
                     </div>
                 </div>
         
-                <div class="footer-section" data-aos="fade-up" data-aos-delay="500" id="footer-contacts">
+                <div class="footer-section" id="footer-contacts">
                     <h3>Contact</h3>
                     <div class="footer-links" id="footer-contacts-2" >
                        <p><i class="fas fa-phone"></i> &nbsp;01483962169 </p>
